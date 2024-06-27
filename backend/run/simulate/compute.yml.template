@@ -1,0 +1,6 @@
+---
+# comment out unused parameters; parameters specified by command-line take precendence
+grid_id: 100 # database id of sizing grid template
+powerload_id: 1 # database id of power load
+location_id: 145612 # database id of location
+energy_management_system_id: 1 # database 

@@ -1,0 +1,15 @@
+{% extends 'tools/sizing/layout.html' %}
+
+{% block head3 %}
+<link rel="stylesheet" type="text/css" href="/static/css/grid-single.css" />
+<meta name="id" content="{{ id }}" />
+{% endblock %}
+
+{% block content3 %}
+{% include 'tools/grid/layout-single.html' %}
+{% endblock %}
+
+{% block scripts %}
+
+<script src="/static/js/grid/single.js"></script>
+{% endblock %}

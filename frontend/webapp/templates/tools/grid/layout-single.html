@@ -1,0 +1,62 @@
+<div id="name-container" class="name-container single-page"></div>
+
+<br />
+
+<div id="description-container"></div>
+
+<br />
+
+<div id="stats" style="display: none;"></div>
+
+<br/>
+
+<div id="full-screen-loader">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+<div class="row" display="margin-bottom: 20px;">
+  <div class="col">
+    <h3>Components</h3>
+  </div>
+  <div class="col">
+    {% if active_page == 'microgrids' %}
+    <button id="open-add-components-modal-btn" class="btn btn-primary float-end new"
+      onclick="openAddComponentsToGridModal(event)">
+      Add Component +
+    </button>
+    {% endif %}
+  </div>
+</div>
+
+<br />
+
+<div id="no-components-message">
+  This {% if active_page == 'sizing' %}Microgrid Sizing Template{% elif active_page == 'microgrids'%}Microgrid{%
+  endif %} has no components yet.
+</div>
+
+<div class="row" id="components-compact-list">
+  <div class="accordion col" id="components-accordion-left"></div>
+  <div class="accordion col" id="components-accordion-right"></div>
+</div>
+
+<div class="modal fade add-components-modal" id="add-components-modal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Components</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        {% if active_page == 'microgrids' %}
+        <button type="button" id="add-components-to-btn" class="btn btn-primary"
+          onclick="addComponentsToGrid(event)">Done</button>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

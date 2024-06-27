@@ -1,0 +1,90 @@
+{% extends 'tools/sizing/layout.html' %}
+
+{% block head2 %}
+<link rel="stylesheet" type="text/css" href="/static/css/widgets.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/sizing.css" />
+{% endblock %}
+
+{% block content3 %}
+<div class="d-flex">
+  <h3>Result&nbsp;</h3> 
+  <h3 id="compute-id">{{ id }}</h3>
+</div>
+
+<br/>
+
+<div id="location-name"></div>
+
+<br/>
+
+{% include 'tools/simulate/widgets.html' %}
+
+<br/>
+<br/>
+
+<p>
+  <button 
+    id="download-btn" 
+    class="btn btn-primary" 
+    onClick="handleExportTable(event)"
+    style="display: none;">
+    Download Table
+  </button>
+</p>
+
+<div class="table-label-deficit">Set Sizing Grid Deficit Ratio Limit
+          <a href="#" id="deficit-link1" data-deficit="0.0">0.0</a> | 
+          <a href="#" id="deficit-link1" data-deficit="0.01">0.01</a> | 
+          <a href="#" id="deficit-link2" data-deficit="0.05">0.05</a> |
+          <a href="#" id="deficit-link3" data-deficit="0.1">0.1</a>
+</div>
+
+<div id="full-screen-loader">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+<div id="sizing-message"></div>
+
+<div id="rotated-table-container">
+  <table id="rotated-table-headers" class="table table-bordered">
+    <thead><tr></th>
+    </thead>
+  </table>
+  <table id="rotated-table" class="table table-bordered table-hover">
+    <thead><tr></th>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+<br/>
+
+<div class="modal fade" id="confirm-save-result-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm Save Result Record</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to save <b><span class="record-name"></span></b>?</p>
+      </div>
+      <div class="modal-footer">
+        <button id="save-result-btn" type="button" class="btn btn-primary" onclick="saveToAccount(event)">Save</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+          onClick="closeConfirmSaveModal(event)">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/jquery.nicescroll@3.7.6/jquery.nicescroll.min.js"></script><script src="https://cdn.jsdelivr.net/npm/table2csv@1.1.6/src/table2csv.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="/static/js/helpers-graph.js"></script>
+<script src="/static/js/helpers-table.js"></script>
+<script src="/static/js/sizing/result.js"></script>
+{% endblock %}

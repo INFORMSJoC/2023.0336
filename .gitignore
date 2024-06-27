@@ -23,6 +23,31 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+# Byte-compiled / optimized / DLL files
+#
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -83,6 +108,93 @@ target/
 
 # Mypy cache
 .mypy_cache/
+
+# auto-save files
+publications.bib.sav
+
+# machine and parameter config files
+*.yml
+*.yaml
+
+# Configuration
+*.env
+*.ini
+docker-compose.yaml
+*/Dockerfile
+*.sbatch
+frontend/webapp/static/js/paths.js
+
+# Data
+backend/data/csv/weather/locations.csv
+backend/data/csv/weather/locations.xlsx
+backend/data/csv/weather/nsrdb-api-formatted-files/*
+!backend/data/csv/weather/nsrdb-api-formatted-files/145612_*201[8-9].csv
+!backend/data/csv/weather/nsrdb-api-formatted-files/145612_*202[0-2].csv
+!backend/data/csv/weather/nsrdb-api-formatted-files/165309_*201[7-9].csv
+compute_sbatch_wrapper.sh
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Database
+*.db
+*.rdb
+*.sqlite
+
+# Pycharm
+.idea
+
+# VS Code
+.vscode/
+
+# Spyder
+.spyproject/
+
+# Jupyter NB Checkpoints
+.ipynb_checkpoints/
+
+# Mac OS-specific storage files
+.DS_Store
+
+# vim
+*.swp
+*.swo
+
+# Mypy cache
+.mypy_cache/
+
+# auto-save files
+publications.bib.sav
 
 # machine and parameter config files
 *.yml

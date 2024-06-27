@@ -1,5 +1,0 @@
----
-# comment out unused parameters; parameters specified by command-line take precendence
-local: True
-results_dir: "/Users/daniel.reich/Downloads/microgrid/reports/location_name_3_anonymized/rightsize/b100_dg100_pv100/210920_083348"
-sensitivity_timestamp: 210920_084749

@@ -1,0 +1,122 @@
+#list {
+  flex-wrap: wrap;
+}
+
+#list .widget img {
+  margin-left: -8px;
+}
+
+#file {
+  margin-top: 10px;
+}
+
+#file-info-modal .modal-dialog {
+  width: 100%;
+  max-width: 700px;
+}
+
+#power-vs-time-graph {
+  margin-bottom: 40px;
+}
+
+#tables {
+  display: flex;
+}
+
+#tables .table-title {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 10px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  padding-left: 10px;
+  background-color: #52637A;
+}
+
+#tables .table-title .title-text {
+  font-weight: 500;
+  color: white;
+}
+
+#tables .table-title a {
+  font-size: 14px;
+  cursor: pointer;
+  color: rgba(248, 249, 250, 1) !important;
+}
+
+.powerload-table-container {
+  max-height: 433px;
+  width: calc(100% + 17px);
+  overflow-y: scroll;
+}
+
+.powerload-table-container  table {
+  border-collapse: collapse;
+  color: #333;
+  background-color: #F7F6F3;
+}   
+
+.powerload-table-container table td,
+.powerload-table-container table tr {
+  text-wrap: nowrap;
+}
+
+.powerload-table-container table td {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.powerload-table-container table th {
+  font-weight: 400; 
+  background-color: #DEE1E6; 
+  position: sticky; 
+  top: -1px;
+}
+
+.powerload-table-container table tbody tr:hover { 
+  background-color: #FFC; 
+}
+
+.powerload-table-container td { 
+  border: solid 1px #CCC; 
+  padding: 0 1ex;
+}
+
+.powerload-table-container tr:nth-child(even) { 
+  color: #284775; 
+  background-color: White; 
+}
+
+.powerload-table-container .left { 
+  text-align: left; 
+}
+
+.powerload-table-container .right { 
+  text-align: right; 
+}
+
+.powerload-table-container .table-responsive {
+  height: 480px; 
+  width:70%;    
+  border:2px solid #444;
+}  
+
+.powerload-table-container .table-responsive:hover { 
+  border-color:red; 
+} 
+
+#preview-container .powerload-table-container {
+  max-width: 100%;
+  max-height: none;
+  overflow-y: hidden;
+}
+
+.timeframe {
+  margin-bottom: 15px;
+  margin-left: 7px;
+}
+
+#powerload-temp-graph {
+  position: absolute;
+  left: -2000px;
+  opacity: 0;
+}

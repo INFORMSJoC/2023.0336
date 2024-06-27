@@ -1,0 +1,23 @@
+<form id="form" class="d-flex flex-column compute-form" onsubmit="simulate(event)">
+  {% include 'tools/simulate/widget-inputs.html' %}
+  <br/>
+  {% include 'tools/simulate/location-inputs.html' %}
+  <br/>
+  <div class="d-flex justify-content-between">
+    <div class="row">
+      {% include 'tools/simulate/start-end-date-inputs.html' %}
+    </div>
+    <div class="align-self-end">
+      <button id="compute-btn" type="submit" class="btn btn-primary">
+        Run Simulation
+      </button>
+      <button id="load-btn" class="btn btn-primary" type="button" style="display: none;"
+        disabled>
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Loading...
+      </button>
+    </div>
+  </div>
+</form>
+
+<div id="warning-container"></div>
