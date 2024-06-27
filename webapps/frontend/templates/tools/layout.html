@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="/static/css/tools.css" />
+<link rel="stylesheet" type="text/css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css" />
+{% block head2 %}{% endblock %}
+{% endblock %}
+
+{% block content %}
+<div id="tool-navigation">
+  <div class="container">
+    <div class="nav nav-tabs position-relative" id="nav-tab" role="tablist">
+      <a href="{{ url_for('tools.components') }}">
+        <div class="nav-item {% if active_page == 'components' %}active{% endif %}" id="nav-components-tab"
+          onclick="toggleMobileToolNavMenu(this, event)" aria-selected="true">
+          <span>Components</span>
+        </div>
+      </a>
+      <a href="{{ url_for('tools.grids') }}">
+        <div class="nav-item {% if active_page == 'microgrids' %}active{% endif %}" id="nav-microgrids-tab"
+          onclick="toggleMobileToolNavMenu(this, event)">
+          <span>Microgrids</span>
+        </div>
+      </a>
+      <a href="{{ url_for('tools.powerloads') }}">
+        <div class="nav-item {% if active_page == 'powerloads' %}active{% endif %}" id="nav-powerloads-tab"
+          onclick="toggleMobileToolNavMenu(this, event)">
+          <span>Powerloads</span>
+        </div>
+      </a>
+      <a href="{{ url_for('tools.simulate') }}">
+        <div class="nav-item {% if active_page == 'simulate' %}active{% endif %}" id="nav-simulate-tab"
+          onclick="toggleMobileToolNavMenu(this, event)">
+          <span>Simulate</span>
+        </div>
+      </a>
+      <a href="{{ url_for('sizing.home') }}">
+        <div class="nav-item {% if active_page == 'sizing' %}active{% endif %}" id="nav-sizing-tab"
+          onclick="toggleMobileToolNavMenu(this, event)">
+          <span>Sizing</span>
+        </div>
+      </a>
+      <a href="{{ url_for('resilience.home') }}">
+        <div class="nav-item {% if active_page == 'resilience' %}active{% endif %}" id="nav-resilience-tab"
+          onclick="toggleMobileToolNavMenu(this, event)">
+          <span>Resilience</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <div class="container">
+    <div id="tool-error"></div>
+    <div class="tab-content" id="tabContent">
+      {% block content2 %}{% endblock %}
+    </div>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://d3js.org/d3.v6.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.23.0/cytoscape.min.js"></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+<script src="https://cdn.sheetjs.com/xlsx-0.19.1/package/dist/xlsx.full.min.js"></script>
+<!-- see https://docs.sheetjs.com/docs/api/ -->
+<script src="/static/js/paths.js"></script>
+<script src="/static/js/helpers.js"></script>
+{% block scripts %}{% endblock %}
+
+{% endblock %}

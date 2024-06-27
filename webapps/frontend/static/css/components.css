@@ -1,0 +1,158 @@
+.btn i {
+  pointer-events: none;
+}
+
+.component-card-row, .component-card-col {
+  margin-bottom: 25px;
+}
+
+.component-header {
+  word-break: break-all;
+}
+
+.component-header .image-container {
+  width: 50px;
+  height: 50px;
+  border: 1px solid grey;
+  padding: 5px;
+  margin-right: 20px;
+}
+
+.component-card .edit-button-container {
+  display: block;
+}
+
+.component-card .edit,
+.component-card .editable-spec-list,
+.component-card .edit-name-container,
+.component-card .editing-button-container,
+.component-card .btn-container
+{
+  display: none;
+}
+
+.component-card .display-name-container span {
+  margin-right: 5px;
+}
+
+.component-card.added {
+  padding: 5px 10px 5px 10px;
+  color: white;
+  background-color: #28A745;
+}
+
+.component-card .name-container input {
+  margin-right: 10px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.component-card .name-container button {
+  margin-right: 10px;
+}
+
+.component-card.removed {
+  opacity: .5;
+}
+
+.editable-card .edit-button-container,
+.editable-card .display-spec-list,
+.editable-card .edit-btn {
+  display: none;
+}
+
+.editable-card .editable-spec-list {
+  display: flex;
+}
+
+.edit-name-container {
+  display: inline-flex;
+  align-items: baseline;
+  max-width: 400px;
+}
+
+.edit-name-container input {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  margin-right: 5px;
+}
+
+.editable-card .edit-name-container button {
+  margin-right: 5px;
+  border: 0px;
+}
+
+.editable-card .editing-button-container,
+.editable-card .btn-container,
+.editable-card .edit-list {
+  display: block;
+}
+
+.editable-card .btn-container {
+  margin-top: 20px;
+}
+
+#components-list .col {
+  display: block;
+  flex: none;
+}
+
+#components-list.compact .col {
+  max-width: 315px;
+}
+
+#components-list.compact h5 {
+  display: none;
+}
+
+#components-list.compact .spec-list,
+#components-list.compact i,
+#components-list.compact .edit-btn
+{
+  display: none;
+}
+
+
+#compact-view-container {
+  display: flex;
+  align-items: center;
+}
+
+#edit-component-form input {
+  max-width: 100px;
+}
+
+#edit-component-form .component-thumb {
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+}
+
+#compact-view-container .form-check-input {
+  width: 40px;
+  height: 20px;
+  margin-right: 8px;
+  margin-top: 0px;
+}
+
+#new-component-multi-modal .modal-dialog {
+  max-width: 900px;
+}
+
+#new-component-multi-modal .modal-footer {
+  justify-content: space-between;
+}
+
+#newComponentMultiModal .component-card .card-body .spec-list input {
+  max-width: 150px;
+  margin-top: 3px;
+}
+
+#newComponentMultiModal .edit-button-container {
+  margin-top: 20px;
+}
+
+
+.grid-contains-components-warning ul li {
+  font-weight: bold;
+}

@@ -1,0 +1,91 @@
+{% extends 'tools/resilience/layout.html' %}
+
+{% block head2 %}
+<link rel="stylesheet" type="text/css" href="/static/css/repairs.css" />
+{% endblock %}
+
+{% block content3 %}
+<div class="row" id="repairs-main-view">
+  <div class="col-12">
+
+    <div class="row align-items-center">
+      <div class="col">
+        <h3 id="repairs-title">Repairs</h3>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-primary float-end new" data-type="repair"
+          onclick="handleUserQuotaCheck(event)">New +</button>
+      </div>
+    </div>
+
+    <br />
+
+    <div class="row full-width-list" id="repairs-list"></div>
+
+    <div class="row">
+      <div id="no-repairs-message" style="display: none;">You don't have any repairs yet.</div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<div class="modal fade" id="new-repair-modal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">New Repair</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="new-repair-form" class="form-control needs-validation" data-tabName="repair" onsubmit="create(event)">
+          <div class="mb-3">
+            <label for="repair-name" class="form-label">Name</label>
+            <input class="form-control" data-name="name" id="repair-name" maxlength="32" required>
+          </div>
+          <div class="mb-3">
+            <label for="repair-description" class="form-label">Description</label>
+            <textarea id="repair-description" data-name="description" class="form-control" maxlength="128"></textarea>
+          </div>
+          <div id="new-repair-component-types"></div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">
+              Create
+            </button>
+            <button id="cancel-add-repair-btn" type="button" class="btn btn-secondary" data-tabname="repair"
+              onClick="closeCreateNewModal(event)">
+              Cancel
+            </button>
+          </div>
+          <div id="new-repair-error"></div>
+          <div id="repair-preview"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="confirm-delete-repair-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm Deletion</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete <b><span class="repair-name"></span></b>? This action cannot be undone.</p>
+      </div>
+      <div class="modal-footer">
+        <button id="delete-repair-btn" type="button" class="btn btn-danger delete" data-tabname="repair"
+          onclick="deleteRepair(event)">Delete</button>
+        <button id="close-confirm-delete-repair-btn" type="button" class="btn btn-secondary" data-tabname="repair"
+          onClick="closeConfirmDeleteModal(event)">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/resilience/repairs.js"></script>
+{% endblock %}

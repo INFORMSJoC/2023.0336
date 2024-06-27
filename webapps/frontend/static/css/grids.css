@@ -1,0 +1,132 @@
+.grid-card {
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.grid-card h5 {
+  margin-bottom: 0px;
+}
+
+.grid-card .description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3; 
+  -webkit-box-orient: vertical;
+  height: 75px;
+  margin-top: 5px;
+  margin-bottom: 2px;
+}
+
+.grid-edit-view .accordion .accordion-button {
+  padding: 0.5rem 1rem;
+  background-color: white;
+  color: inherit;
+  border-radius: 3px;
+  box-shadow: none;
+  border-bottom: 1px solid rgba(0,0,0,.125);
+  display: flex;
+  justify-content: space-between;
+}
+
+.grid-edit-view .accordion .accordion-button::after {
+  width: 17px;
+  height: 17px;
+  background-size: 17px;
+}
+
+.grid-component-header {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.grid-component-header .grid-component-qty-rmv-container {
+  margin-top: 10px;
+  border-top: 1px solid #DEE1E6;
+  margin-left: -20px;
+  margin-right: -20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+}
+
+.grid-component-header .grid-component-qty-rmv-container input {
+  max-width: 100px;
+  height: 30px;
+}
+
+.grid-component-header .grid-component-qty-rmv-container button {
+  padding: .05rem .35rem;
+}
+
+
+.grid-component-header img {
+  margin-right: 10px;
+}
+
+.accordion-button {
+  background-color: #DEE1E6 !important;
+}
+
+.grid-edit-view .accordion .accordion-header .btn-close, .grid-edit-view .accordion .accordion-header i {
+  width: 12px;
+  height: 12px;
+  font-size: 12px;
+} 
+
+.grid-edit-view .accordion .accordion-item {
+  margin-bottom: 20px;
+  border-bottom: 0px;
+  border-top: 1px solid rgba(0,0,0,.125) !important;
+}
+
+.grid-edit-view .accordion .accordion-item:not(:first-of-type) {
+  border-top: inherit;
+}
+
+.grid-edit-view .accordion .accordion-item.sizing-no-component {
+  background-color: #DEE1E6;
+  border-bottom: 1px solid rgba(0,0,0,.125);
+  padding-bottom: 0px;
+}
+
+.grid-edit-view .accordion .accordion-collapse {
+  border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.grid-edit-view .add-type {
+  height: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.grid-edit-view .add-type-buffer {
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 10px;
+  padding-bottom: 74px;
+  border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.add-components-to-grid-modal .modal-dialog {
+  max-width: 900px;
+}
+
+#grid-network-chart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
+  background-color: #DEE1E6;
+  max-height: 600px;
+}
+
+.grid-name-container .display-container span {
+  font-size: 1.75rem;
+  font-weight: 500;
+}

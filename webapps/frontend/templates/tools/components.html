@@ -1,0 +1,141 @@
+{% extends 'tools/layout.html' %}
+
+{% block head2 %}
+<link rel="stylesheet" type="text/css" href="/static/css/components.css" />
+{% endblock %}
+
+{% block content2 %}
+<div class="row" id="component-main-view">
+  <div class="col-12">
+    <div class="row align-items-center">
+      <div class="col">
+        <h3 id="components-title">Components</h3>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-primary float-end new" data-type="component"
+          onclick="handleUserQuotaCheck(event)">New +</button>
+      </div>
+    </div>
+
+    <br />
+
+    <div class="form-check form-switch" id="compact-view-container">
+      <input class="form-check-input" type="checkbox" id="component-compact-view-input"
+        onchange="handleCompactViewToggle(event)">
+      <label class="form-check-label" for="component-compact-view-input">Compact View</label>
+    </div>
+
+    <br />
+
+    <div class="row full-width-list" id="components-list"></div>
+
+    <div class="row">
+      <div id="no-components-message" style="display: none;">You don't have any components yet.</div>
+    </div>
+
+    <div class="modal fade" id="confirm-delete-component-modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Confirm Deletion</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to delete <b><span class="component-name"></span></b>? This action cannot be
+              undone.</p>
+          </div>
+          <div class="modal-footer">
+            <button id="delete-component-btn" type="button" class="btn btn-danger delete"
+              data-tabname="component">Delete</button>
+            <button id="close-confirm-delete-component-btn" type="button" class="btn btn-secondary"
+              data-tabname="component" onClick="closeConfirmDeleteModal(event)">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" data-tabname="component" id="new-component-modal" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">New Component</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="new-component-form" class="form-control needs-validation" data-tabname="component"
+              onsubmit="create(event)">
+              <div class="mb-3">
+                <label for="component-name" class="form-label">Name</label>
+                <input type="component-name" data-name="name" class="form-control" id="component-name" required="true"
+                  onkeypress="validateComponentName(this, event)" maxlength="32">
+                <br />
+                <label for="component-description" class="form-label">Description</label>
+                <textarea type="component-description" data-name="description" class="form-control"
+                  maxlength="128"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="component-type-select" class="form-label">Type</label>
+                <select data-name="type" id="component-type-select" class="form-select" required="true"
+                  onchange="selectComponentType(event)">
+                  <option value="" disabled selected>Select component type</option>
+                </select>
+              </div>
+              <div id="new-component-specs" class="mb-3"></div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">
+                  Create
+                </button>
+                <button id="cancel-add-component-btn" type="button" class="btn btn-secondary" data-tabname="component"
+                  onClick="closeCreateNewModal(event)">
+                  Cancel
+                </button>
+              </div>
+              <div id="new-component-error-alert" class="alert alert-danger alert-dismissible" role="alert"
+                style="display: none;">
+                <span></span>
+                <button id="new-component-error-dismiss-btn" type="button" class="btn-close" aria-label="Close"
+                  onclick="dismissAddComponentErrorAlert(event)"></button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="visually-hidden" id="open-new-components-multi-modal-btn" data-bs-toggle="modal"
+      data-bs-target="#new-component-multi-modal"></button>
+
+    <div class="modal fade" id="new-component-multi-modal" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add New Components</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+            <div id="component-multi-modal-error"></div>
+            <div class="button-container">
+              <button id="component-multi-loader" class="btn btn-primary" type="button" disabled style="display: none;">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Creating...
+              </button>
+              <button type="button" class="btn btn-primary" id="add-components-multi-btn"
+                onclick="createMultiple(event)"></button>
+              <button type="button" class="btn btn-secondary" id="close-new-components-multi-modal-btn"
+                data-bs-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+<script src="/static/js/components.js"></script>
+{% endblock %}
