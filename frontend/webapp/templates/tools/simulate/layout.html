@@ -1,0 +1,23 @@
+{% extends 'tools/layout.html' %}
+
+{% block head2 %}
+<link rel="stylesheet" type="text/css" href="/static/css/simulate.css" />
+<meta name="page-type" content="simulate" />
+{% block head3 %}{% endblock %}
+{% endblock %}
+
+{% block content2 %}
+<div class="submenu">
+  <a href="{{ url_for('simulate.compute') }}">
+    <div class="submenu-item {% if active_sub_page == 'compute' %}active{% endif %}">
+      Run Analysis
+    </div>
+  </a>
+  <a href="{{ url_for('simulate.results') }}">
+    <div class="submenu-item {% if active_sub_page == 'results' %}active{% endif %}" data-subpagename="results">
+      History
+    </div>
+  </a>
+</div>
+<div id="simulate">{% block content3 %}{% endblock %}</div>
+{% endblock %}

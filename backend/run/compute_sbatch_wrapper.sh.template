@@ -1,0 +1,21 @@
+#!/bin/bash
+
+TABLE_NAME=$1
+COMPUTE_ID=$2
+TIME_LIMIT=$3
+SCRIPT=$4
+
+sbatch <<EOT
+#!/bin/bash
+
+#SBATCH --job-name=${TABLE_NAME}.${COMPUTE_ID}
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=8gb
+#SBATCH --time=${TIME_LIMIT}
+#SBATCH --output=${TABLE_NAME}.${COMPUTE_ID}.%j.out
+#SBATCH --error=${TABLE_NAME}.${COMPUTE_ID}.%j.error
+
+source ~/virtual_env/microgrid/bin/activate
+
+time ${SCRIPT} -m ${TABLE_NAME} -r ${COMPUTE_ID}
+EOT
