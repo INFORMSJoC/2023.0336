@@ -1,0 +1,7 @@
+.grid line {
+  stroke: #ddd;
+}
+
+#simulation-message-container {
+  margin-bottom: 2.4rem;
+}

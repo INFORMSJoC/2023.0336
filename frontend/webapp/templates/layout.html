@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html class="h-100">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1">
+		<title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='authentication-codeshack/style.css') }}">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"/>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/WindTurbine.png') }}">
+    {% block head %}{% endblock %}
+	</head>
+	<body class="loggedin d-flex flex-column h-100 {% if role == 'Guest' %}guest{% endif %}" >
+    <div id="role" style="display: none;">{{ role }}</div>
+    <nav class="navtop">
+			<div class="container">
+        <div class="app-logo-title-container">
+          <a href="{{ url_for('toplevel.home') }}">
+            <img class="app-logo" src="{{ url_for('static', filename='images/WindTurbine.png') }}"/>
+            <h1>Microgrid Planner</h1>
+          </a>
+        </div>
+        
+        <button id="mobile-nav-btn" class="btn" onclick="toggleMobileNavMenu(this, event)">
+          <i class="bi bi-list"></i>
+        </button>
+
+        <div id="navtop-links-container">
+          <a href="{{ url_for('tools.home') }}"><i class="fas fa-lightbulb"></i>Tools</a>
+          <a href="https://github.com/reichd/MicrogridPlanner/" target="_blank"><i class="fas fa-code"></i>Code</a>          
+          <a href="{{ url_for('authentication.profile') }}"><i class="fas fa-user-circle"></i>
+            {{ username if username else 'guest'}}</a>
+          {% if role == 'Admin' %}
+            <a href="{{ url_for('authentication.admin') }}"><i class="fas fa-cog"></i>Admin</a>
+          {% endif %}
+          {% if not username or (username == 'guest' and role != 'Admin') %}
+            <a href="{{ url_for('authentication.login') }}"><i class="fas fa-sign-out-alt"></i>Login</a>
+          {% else %}
+            <a href="{{ url_for('authentication.logout') }}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+          {% endif %}
+        </div>
+			</div>
+		</nav>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+		
+		{% block content %}{% endblock %}
+    
+    <div class="toast-container">
+      <div id="global-toast" class="toast hide bg-success text-white" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-body">
+          <i class="bi bi-check-circle-fill"></i>
+          <span class="toast-text"></span>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer mt-auto py-3 bg-light">
+      <div class="container">
+        <img class="nps-logo" src="{{ url_for('static', filename='images/nps_logo.png') }}"/>
+        <div>
+          <span class="text-muted">Site hosted by <a href="https://www.nps.edu" target="_blank">Naval Postgraduate School</a></span>
+          <br/>
+          <span class="text-muted">Contact <a href="mailto:microgrid@nps.edu">microgrid@nps.edu</a></span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Handles collapsing/expanding main mobile navigation
+      const toggleMobileNavMenu = (el, e) => {
+        const navMenu = $("#navtop-links-container");
+        if (navMenu.hasClass("show-nav-dropdown")) {
+          navMenu.removeClass("show-nav-dropdown");
+        }
+        else {
+          navMenu.addClass("show-nav-dropdown");
+        }
+      }
+    </script>
+	</body>
+</html>

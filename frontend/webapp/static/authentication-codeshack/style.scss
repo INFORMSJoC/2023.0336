@@ -1,0 +1,257 @@
+$font: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
+$font-size: 16px;
+$background-color: #435165;
+$login-background-color: #ffffff;
+$login-width: 400px;
+$login-header-color: #5b6574;
+$login-border-color: #dee0e4;
+$login-button-background-color: #3274d6;
+$login-button-color: #ffffff;
+$loggedin-background-color: #f3f4f7;
+$content-width: 1000px;
+* {
+	box-sizing: border-box;
+	font-family: $font;
+    font-size: $font-size;
+}
+body {
+    background-color: $background-color;
+	margin: 0;
+}
+.login, .register {
+    width: $login-width;
+    background-color: $login-background-color;
+    box-shadow: 0 0 9px 0 rgba(0,0,0,0.3);
+    margin: 100px auto;
+    h1 {
+        text-align: center;
+        color: $login-header-color;
+        font-size: 24px;
+        padding: 20px 0 20px 0;
+        border-bottom: 1px solid $login-border-color;
+    }
+	.links {
+		display: flex;
+		padding: 0 15px;
+		a {
+			color: mix(#fff, $login-header-color, 50);
+			text-decoration: none;
+			display:inline-flex;
+			padding: 0 10px 10px 10px;
+			font-weight: bold;
+			&:hover {
+				color: mix(#fff, $login-header-color, 40);
+			}
+			&.active {
+				border-bottom: 3px solid $login-button-background-color;
+				color: mix(#000, $login-button-background-color, 0);
+			}
+		}
+	}
+    form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-top: 20px;
+        label {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 12%;
+            height: 50px;
+            background-color: $login-button-background-color;
+            color: $login-button-color;
+        }
+        input[type="password"], input[type="text"], input[type="email"] {
+            width: 80%;
+            height: 50px;
+            border: 1px solid $login-border-color;
+            margin-bottom: 20px;
+            padding: 0 15px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
+            background-color: $login-button-background-color;
+            border: 0;
+            cursor: pointer;
+            font-weight: bold;
+            color: $login-button-color;
+            transition: background-color 0.2s;
+			border-radius: 0;
+			appearance: none;
+            &:hover {
+                background-color: darken($login-button-background-color, 5);
+                transition: background-color 0.2s;
+            }
+        }
+		#rememberme {
+			width: 100%;
+			height: auto;
+			padding: 5px 20px;
+			background-color: transparent;
+			color: #000;
+			justify-content: flex-start;
+			input {
+				transform: scale(1.3);
+				margin-right: 7px;
+			}
+		}
+		.msg {
+			padding: 0 20px;
+			width: 100%;
+		}
+		.captcha {
+			display: flex;
+		}
+		> a {
+			text-decoration: none;
+			color: $login-header-color;
+			width: 100%;
+			padding: 5px 20px;
+			&:hover {
+				color: darken($login-header-color, 15);
+			}
+		}
+    }
+}
+$navtop-background-color: mix(#000, $background-color, 30);
+.navtop {
+	background-color: $navtop-background-color;
+	height: 60px;
+	width: 100%;
+	border: 0;
+	div {
+		display: flex;
+		margin: 0 auto;
+		width: $content-width;
+		height: 100%;
+		h1, a {
+			display: inline-flex;
+			align-items: center;
+		}
+		h1 {
+			flex: 1;
+			font-size: 22px;
+			padding: 0;
+			margin: 0;
+			color: mix(#fff, $navtop-background-color, 90);
+			font-weight: normal;
+		}
+		a {
+			padding: 0 15px;
+			text-decoration: none;
+			color: mix(#fff, $navtop-background-color, 70);
+			font-weight: 600;
+			font-size: 16px;
+			i {
+				font-size: 14px;
+				padding: 2px 8px 0 0;
+			}
+			&:hover {
+				color: mix(#fff, $navtop-background-color, 90);
+			}
+		}
+	}
+}
+body.loggedin {
+	background-color: $loggedin-background-color;
+}
+.content {
+	width: $content-width;
+	margin: 0 auto;
+
+	.block {
+		box-shadow: 0 0 5px 0 rgba(0,0,0,0.1);
+		margin: 25px 0;
+		padding: 25px;
+		background-color: #fff;
+	}
+	.block p {
+		padding: 5px;
+		margin: 0 0 10px 0;
+	}
+	&.profile {
+		form {
+			label {
+				display: block;
+				padding: 15px 0 10px 0;
+				font-weight: 500;
+				font-size: 14px;
+				color: #4d4d4d;
+			}
+			input[type="text"], input[type="password"], input[type="email"] {
+				padding: 10px;
+				width: 250px;
+				border: 1px solid #ddd;
+				border-radius: 4px;
+			}
+		}
+		.profile-detail {
+			padding: 5px;
+			strong {
+				display: inline-block;
+				color: #777;
+				min-width: 120px;
+				font-size: 16px;
+			}
+			i {
+				width: 28px;
+				color: mix($loggedin-background-color, #000, 70);
+			}
+		}
+		.profile-btn {
+			display: inline-block;
+			text-decoration: none;
+			border: 0;
+			cursor: pointer;
+			color: #fff;
+			background-color: $login-button-background-color;
+			margin: 20px 5px 0 0;
+			padding: 10px 15px;
+			border-radius: 4px;
+			appearance: none;
+			font-size: 14px;
+			&:hover {
+				background-color: darken($login-button-background-color, 5);
+			}
+		}
+	}
+}
+@media screen and (max-width: $login-width) {
+	.login, .register {
+		width: 95%;
+	}
+}
+@media screen and (max-width: $content-width) {
+	.navtop {
+		height: auto;
+		padding: 10px;
+		div {
+			flex-flow:wrap;
+			width: 100%;
+			h1 {
+				display: block;
+				flex-basis: 100%;
+			}
+			a {
+				padding: 10px 0;
+				flex-basis: 50%;
+			}
+		}
+	}
+	.content {
+		padding: 10px;
+		width: 100%;
+		form {
+			input[type="text"], input[type="password"], input[type="email"] {
+				width: 100%;
+				max-width: 100%;
+			}
+		}
+	}
+	.profile-detail strong {
+		width: 100%;
+	}
+}

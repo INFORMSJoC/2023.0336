@@ -1,0 +1,42 @@
+.btn i {
+  pointer-events: none;
+}
+
+.component-header {
+  word-break: break-all;
+}
+
+.component-header .image-container {
+  width: 50px;
+  height: 50px;
+  border: 1px solid grey;
+  padding: 5px;
+  margin-right: 20px;
+}
+
+.component-card .edit-button-container {
+  display: block;
+}
+
+#list.compact .card {
+  width: 100%;
+  max-width: 315px;
+  float: left;
+  margin-right: 30px;
+}
+
+#list.compact h5 {
+  display: none;
+}
+
+#compact-view-container {
+  display: flex;
+  align-items: center;
+}
+
+#compact-view-container .form-check-input {
+  width: 40px;
+  height: 20px;
+  margin-right: 8px;
+  margin-top: 0px;
+}

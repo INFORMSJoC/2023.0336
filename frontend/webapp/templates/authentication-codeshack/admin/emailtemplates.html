@@ -1,0 +1,37 @@
+{% extends 'authentication-codeshack/admin/layout.html' %}
+
+{% block title %}Email Templates{% endblock %}
+
+{% block content %}
+<h2>Email Templates</h2>
+
+{% if msg: %}
+<div class="msg success">
+    <i class="fas fa-check-circle"></i>
+    <p>{{ msg }}</p>
+    <i class="fas fa-times"></i>
+</div>
+{% endif %}
+
+<div class="content-block">
+
+    <form action="" method="post" class="form responsive-width-100">
+
+        {% if activation_email_template: %}
+        <label for="activation_email_template">Activation Email Template</label>
+        <textarea id="activation_email_template" name="activation_email_template">{{ activation_email_template }}</textarea>
+        {% endif %}
+
+        {% if twofactor_email_template: %}
+        <label for="twofactor_email_template">Two-factor Email Template</label>
+        <textarea id="twofactor_email_template" name="twofactor_email_template">{{ twofactor_email_template }}</textarea>
+        {% endif %}
+
+        <div class="submit-btns">
+            <input type="submit" value="Save">
+        </div>
+
+    </form>
+
+</div>
+{% endblock %}

@@ -1,0 +1,132 @@
+{% extends 'tools/layout.html' %}
+
+{% block head2 %}
+<link rel="stylesheet" type="text/css" href="/static/css/components.css" />
+{% endblock %}
+
+{% block content2 %}
+  
+<div class="row">
+  <div class="col">
+    <h3 id="components-title">Components</h3>
+  </div>
+  <div class="col">
+    <button type="button" class="btn btn-primary float-end new" data-type="component"
+      onclick="handleUserQuotaCheck(event)">New +</button>
+  </div>
+</div>
+
+<br />
+
+<div class="form-check form-switch" id="compact-view-container">
+  <input class="form-check-input" type="checkbox" id="compact-view-input"
+    onchange="handleCompactViewToggle(event)">
+  <label class="form-check-label" for="compact-view-input">Compact View</label>
+</div>
+
+<br />
+
+<div id="full-screen-loader">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+<div class="full-width-list" id="list"></div>
+
+<div class="row" id="components-compact-list" style="display: none;">
+  <div class="accordion col" id="components-accordion-left"></div>
+  <div class="accordion col" id="components-accordion-right"></div>
+</div>
+
+<div class="row">
+  <div id="no-components-message" style="display: none;">You don't have any components yet.</div>
+</div>
+
+<div class="modal fade" id="confirm-delete-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm Deletion</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete <b><span class="name"></span></b>? This action cannot be
+          undone.</p>
+      </div>
+      <div class="modal-footer">
+        <button id="delete-btn" type="button" class="btn btn-danger delete">Delete</button>
+        <button 
+          id="close-confirm-delete-btn" 
+          type="button" 
+          class="btn btn-secondary"
+          onClick="closeConfirmDeleteModal(event)">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="new-modal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">New Component</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="new-form" class="form-control needs-validation" onsubmit="create(event)">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input 
+              type="name" 
+              name="name" 
+              class="form-control" 
+              id="name" 
+              required="true"
+              autocomplete="off"
+              maxlength="32">
+            <br />
+            <label for="description" class="form-label">Description</label>
+            <textarea id="description" type="description" name="description" name="description" class="form-control"
+              maxlength="128"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="type-select" class="form-label">Type</label>
+            <select name="type" id="type-select" class="form-select" required="true"
+              onchange="selectComponentType(event)">
+              <option value="" disabled selected>Select component type</option>
+            </select>
+          </div>
+          <div id="new-specs" class="mb-3"></div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">
+              Create
+            </button>
+            <button 
+              id="cancel-add-btn" 
+              type="button" 
+              class="btn btn-secondary" 
+              onClick="handleCloseCreateNewModal(event)">
+              Cancel
+            </button>
+          </div>
+          <div id="new-error-alert" class="alert alert-danger alert-dismissible" role="alert"
+            style="display: none;">
+            <span></span>
+            <button id="new-error-dismiss-btn" type="button" class="btn-close" aria-label="Close"
+              onclick="dismissAddComponentErrorAlert(event)"></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+<script src="/static/js/components.js"></script>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'authentication-codeshack/admin/layout.html' %}
+
+{% block title %}{{ page }} Account{% endblock %}
+
+{% block content %}
+<h2>{{ page }} Account</h2>
+
+<div class="content-block">
+
+    <form action="" method="post" class="form responsive-width-100">
+
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Username" value="{{ account['username'] }}" required>
+
+        <label for="password">{{ 'New ' if page == 'Edit' else '' }}Password</label>
+        <input type="text" id="password" name="password" placeholder="{{ 'New ' if page == 'Edit' else '' }}Password" value=""{{ '' if page == 'Edit' else ' required' }}>
+
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" placeholder="Email" value="{{ account['email'] }}" required>
+
+        <label for="activation_code">Activation Code</label>
+        <select id="activation_code" name="activation_code" style="margin-bottom: 30px;">
+            {% for account_status in account_statuses: %}
+            <option value="{{ account_status }}"{{ ' selected' if account_status == account['activation_code'] else '' }}>{{ account_status }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="rememberme">Remember Me Code</label>
+        <input type="text" id="rememberme" name="rememberme" placeholder="Remember Me Code" value="{{ account['rememberme'] }}">
+
+        <label for="role">Role</label>
+        <select id="role" name="role" style="margin-bottom: 30px;">
+            {% for role in roles: %}
+            <option value="{{ role }}"{{ ' selected' if role == account['role'] else '' }}>{{ role }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="registered">Registered Date</label>
+        <input id="registered" type="datetime-local" name="registered" value="{{ account['registered'] }}" required>
+    
+        <label for="last_seen">Last Seen Date</label>
+        <input id="last_seen" type="datetime-local" name="last_seen" value="{{ account['last_seen'] }}" required>
+
+        <div class="submit-btns">
+            <input type="submit" name="submit" value="Submit">
+            {% if page == 'Edit': %}
+            <input type="submit" name="delete" value="Delete" class="delete" onclick="return confirm('Are you sure you want to delete this account?')">
+            {% endif %}
+        </div>
+
+    </form>
+
+</div>
+{% endblock %}
