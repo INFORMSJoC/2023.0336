@@ -1,0 +1,62 @@
+<div class="form-group col datetime-container">
+  <div class="d-flex">
+    <div class="date-container">
+      <label for="startdate">Simulation Start</label>
+      <input 
+        name="datetime" 
+        type="text" 
+        class="form-control" 
+        required 
+        id="startdate"
+        autoComplete="off"
+        readonly="readonly"
+        disabled>
+    </div>
+    <div class="time-container">
+      <label for="starttime"></label>
+      <input 
+        name="datetime" 
+        type="text" 
+        class="form-control" 
+        required 
+        id="starttime"
+        autoComplete="off"
+        disabled>
+    </div>
+  </div>
+  <div id="startdate-feedback" class="invalid-feedback">
+    Please enter a valid date (mm/dd/yyyy). Start date cannot be out of the powerload time range or greater than the end date.
+  </div>
+</div>
+<div class="form-group col datetime-container">
+  <div class="form-group">
+    <div class="d-flex">
+      <div class="date-container">
+        <label for="enddate">Simulation End</label>
+        <input 
+          name="datetime" 
+          type="text" 
+          class="form-control" 
+          required 
+          id="enddate"
+          autoComplete="off"
+          readonly="readonly"
+          disabled>
+      </div>
+      <div class="time-container">
+        <label for="endtime"></label>
+        <input 
+          name="datetime" 
+          type="text" 
+          class="form-control" 
+          required 
+          id="endtime"
+          autoComplete="off"
+          disabled>
+      </div>
+    </div>
+    <div id="enddate-feedback" class="invalid-feedback">
+      Please enter a valid date (mm/dd/yyyy). End date cannot out of the powerload time range or less than the start date.
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+---
+# parameters specified by command-line take precendence
+drop_create: True # must be set to False if you do not have root access
+authentication: True
+weather: True
+microgrid: True
+data_dev: False

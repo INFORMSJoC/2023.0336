@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="/static/css/tools.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/timepicker@1.14.1/jquery.timepicker.css">
+<!--Jquery UI and other Scripts-->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/timepicker@1.14.1/jquery.timepicker.js"></script>
+<script src="https://d3js.org/d3.v6.min.js"></script>
+<script src="https://cdn.sheetjs.com/xlsx-0.19.1/package/dist/xlsx.full.min.js"></script>
+<!--Inter-Connection scripts-->
+<!-- see https://docs.sheetjs.com/docs/api/ -->
+<script src="/static/js/paths.js"></script>
+<script src="/static/js/helpers-datetime.js"></script>
+<script src="/static/js/helpers.js"></script>
+<script src="/static/js/mobile-nav.js"></script>
+{% block head2 %}{% endblock %}
+{% endblock %}
+
+{% block content %}
+<div id="tool-navigation">
+  <div class="container">
+    <div class="nav position-relative" id="nav-tab">
+      <a href="{{ url_for('tools.components') }}">
+        <div class="nav-item {% if active_page == 'components' %}active{% endif %}" id="nav-components-tab"
+          onclick="toggleMobileToolNavMenu(this, event)" aria-selected="true">
+          <span>Components</span>
+          <i class="bi bi-caret-right"></i>
+          <i class="bi bi-caret-down"></i>
+        </div>
+      </a>
+      <a href="{{ url_for('tools.grids') }}">
+        <div class="nav-item {% if active_page == 'microgrids' %}active{% endif %}" id="nav-microgrids-tab"
+          onclick="toggleMobileToolNavMenu(this, event)">
+          <span>Microgrids</span>
+          <i class="bi bi-caret-right"></i>
+          <i class="bi bi-caret-down"></i>
+        </div>
+      </a>
+      <a href="{{ url_for('tools.powerloads') }}">
+        <div class="nav-item {% if active_page == 'powerloads' %}active{% endif %}" id="nav-powerloads-tab"
+          onclick="toggleMobileToolNavMenu(this, event)">
+          <span>Powerloads</span>
+          <i class="bi bi-caret-right"></i>
+          <i class="bi bi-caret-down"></i>
+        </div>
+      </a>
+      <a href="{{ url_for('simulate.home') }}">
+        <div class="nav-item {% if active_page == 'simulate' %}active{% endif %}" id="nav-simulate-tab"
+          onclick="toggleMobileToolNavMenu(this, event)">
+          <span>Simulate</span>
+          <i class="bi bi-caret-right"></i>
+          <i class="bi bi-caret-down"></i>
+        </div>
+      </a>
+      {% if role and role != 'Guest' %}
+        <a href="{{ url_for('sizing.home') }}">
+          <div class="nav-item {% if active_page == 'sizing' %}active{% endif %}" id="nav-sizing-tab"
+            onclick="toggleMobileToolNavMenu(this, event)">
+            <span>Sizing</span>
+            <i class="bi bi-caret-right"></i>
+            <i class="bi bi-caret-down"></i>
+          </div>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<div class="content">
+  <div class="container">
+    <div id="tool-error"></div>
+    <div class="content" id="content">
+      {% block content2 %}{% endblock %}
+    </div>
+  </div>
+</div>
+
+{% block scripts %}{% endblock %}
+
+{% endblock %}

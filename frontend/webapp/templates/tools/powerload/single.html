@@ -1,0 +1,51 @@
+{% extends 'tools/layout.html' %}
+
+{% block head2 %}
+<link rel="stylesheet" type="text/css" href="/static/css/powerloads.css" />
+<meta name="id" content="{{ id }}" />
+{% endblock %}
+
+{% block content2 %}
+
+<div id="name-container" class="name-container single-page"></div>
+
+<br />
+
+<div id="description-container"></div>
+
+<br/>
+
+<div id="full-screen-loader">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+<div id="power-vs-time-graph"></div>
+
+<div id="tables" style="display: none;">
+  <div style="margin-right: 40px;">
+    <div class="table-title d-flex justify-content-between">
+      <div class="title-text">Uploaded Data</div>
+      <a href="#" class="link-light" data-type="uploaded" onClick="handleExportTable(event)">Download</a>
+    </div>
+    <div id="uploaded-table-container" class="powerload-table-container"></div>
+  </div>
+  <div>
+    <div class="table-title d-flex justify-content-between">
+      <div class="title-text">Processed Data</div>
+      <a href="#" class="link-light" data-type="processed" onClick="handleExportTable(event)">Download</a>
+    </div>
+    <div id="processed-table-container" class="powerload-table-container"></div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/table2csv@1.1.6/src/table2csv.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="/static/js/helpers-table.js"></script>
+<script src="/static/js/helpers-graph.js"></script>
+<script src="/static/js/powerload/single.js"></script>
+{% endblock %}

@@ -1,0 +1,28 @@
+.add-type {
+  height: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.add-type-buffer {
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 10px;
+  padding-bottom: 74px;
+  border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.add-components-modal .modal-dialog {
+  max-width: 900px;
+}
+
+.grid-stats-container div {
+  display: flex;
+}
+
+.grid-stats-container div span {
+  margin-left: 5px;
+}
+
