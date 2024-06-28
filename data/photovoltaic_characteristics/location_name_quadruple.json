@@ -1,0 +1,74 @@
+[
+    {
+        "type": "photovoltaic-characteristics",
+        "month": "January",
+        "capacity": 2.488,
+        "sine_width": 0.42
+    },
+    {
+        "type": "photovoltaic-characteristics",
+        "month": "February",
+        "capacity": 2.744,
+        "sine_width": 0.45
+    },
+    {
+        "type": "photovoltaic-characteristics",
+        "month": "March",
+        "capacity": 2.94,
+        "sine_width": 0.5
+    },
+    {
+        "type": "photovoltaic-characteristics",
+        "month": "April",
+        "capacity": 3.132,
+        "sine_width": 0.54
+    },
+    {
+        "type": "photovoltaic-characteristics",
+        "month": "May",
+        "capacity": 3.164,
+        "sine_width": 0.59
+    },
+    {
+        "type": "photovoltaic-characteristics",
+        "month": "June",
+        "capacity": 3.228,
+        "sine_width": 0.59
+    },
+    {
+        "type": "photovoltaic-characteristics",
+        "month": "July",
+        "capacity": 3.196,
+        "sine_width": 0.59
+    },
+    {
+        "type": "photovoltaic-characteristics",
+        "month": "August",
+        "capacity": 3.164,
+        "sine_width": 0.59
+    },
+    {
+        "type": "photovoltaic-characteristics",
+        "month": "September",
+        "capacity": 3.088,
+        "sine_width": 0.5
+    },
+    {
+        "type": "photovoltaic-characteristics",
+        "month": "October",
+        "capacity": 2.864,
+        "sine_width": 0.46
+    },
+    {
+        "type": "photovoltaic-characteristics",
+        "month": "November",
+        "capacity": 2.628,
+        "sine_width": 0.42
+    },
+    {
+        "type": "photovoltaic-characteristics",
+        "month": "December",
+        "capacity": 2.456,
+        "sine_width": 0.42
+    }
+]

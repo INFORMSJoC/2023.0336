@@ -1,0 +1,37 @@
+{% extends 'authentication-codeshack/admin/layout.html' %}
+
+{% block title %}Roles{% endblock %}
+
+{% block content %}
+<h2>Roles</h2>
+
+<div class="content-block">
+    <div class="table">
+        <table>
+            <thead>
+                <tr>
+                    <td>Role</td>
+                    <td>Total Accounts</td>
+                    <td>Active Accounts</td>
+                    <td>Inactive Accounts</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% if not roles: %}
+                <tr>
+                    <td colspan="8" style="text-align:center;">There are no roles</td>
+                </tr>
+                {% endif %}
+                {% for index, role in enumerate(roles): %}
+                <tr>
+                    <td>{{ role }}</td>
+                    <td><a href="{{ url_for('authentication.admin_accounts') }}/n0/n0/n0/n0/{{ role }}/ASC/id/1">{{ "{:,}".format(roles[role]) }}</a></td>
+                    <td><a href="{{ url_for('authentication.admin_accounts') }}/n0/n0/active/n0/{{ role }}/ASC/id/1">{{ "{:,}".format(roles_active[role]) if roles_active[role] else 0 }}</a></td>
+                    <td><a href="{{ url_for('authentication.admin_accounts') }}/n0/n0/inactive/n0/{{ role }}/ASC/id/1">{{ "{:,}".format(roles_inactive[role]) if roles_inactive[role] else 0 }}</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

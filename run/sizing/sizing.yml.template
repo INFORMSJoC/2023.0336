@@ -1,0 +1,7 @@
+---
+# comment out unused parameters; parameters specified by command-line take precendence
+num_levels: 2 # number of discrete levels for DER capacities
+grid_id: 250 # database id of sizing grid template
+powerload_id: 1 # database id of power load
+algorithm: "exact" # "exact" or "heuristic"
+debug: False

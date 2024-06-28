@@ -1,0 +1,46 @@
+{% extends 'tools/sizing/layout.html' %}
+
+{% block content3 %}
+<div class="row" id="sizing-simulation">
+  <form id="sizing-form" class="run-form" onsubmit="runSimulation(event)">
+
+    <div class="row">
+
+      <div class="form-group col-md-2 align-self-end">
+        <label for="startdatetime">Simulation Start</label>
+        <input data-name="startdatetime" type="text" class="form-control" required id="startdatetime"
+          autoComplete="off">
+      </div>
+
+      <div class="form-group col-md-4 align-self-end">
+        <label for="gridSelection">Microgrid</label>
+        <select data-name="grid_id" id='gridSelection' class="form-select" required aria-label="Grid makeup select">
+          <option value="" selected disabled hidden>Select microgrid</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-4 align-self-end">
+        <label for="powerloadSelection">
+          Powerload
+        </label>
+        <select data-name="load_id" id='powerloadSelection' class="form-select" required aria-label="powerload select">
+          <option value="" selected disabled hidden>Select powerload</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-2 align-self-end">
+        <button id="run-btn" type="submit" class="btn btn-primary align-self-end">Run Sizing Method</button>
+        <button id="load-btn" class="btn btn-primary align-self-end" type="button" style="display: none;" disabled>
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          Loading...
+        </button>
+      </div>
+
+    </div>
+  </form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/sizing/run.js"></script>
+{% endblock %}

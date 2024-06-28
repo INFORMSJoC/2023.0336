@@ -1,0 +1,6 @@
+---
+# comment out unused parameters; parameters specified by command-line take precendence
+doe_params_file: "run/design_of_experiments/sensitivity/parameters.csv"
+stack: 1
+levels: 257
+doe_output_file: "run/design_of_experiments/sensitivity/designs.csv"
