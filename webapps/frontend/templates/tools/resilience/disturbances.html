@@ -1,0 +1,89 @@
+{% extends 'tools/resilience/layout.html' %}
+
+{% block content3 %}
+<div class="row" id="disturbances-main-view">
+  <div class="col-12">
+
+    <div class="row align-items-center">
+      <div class="col">
+        <h3 id="disturbances-title">Disturbances</h3>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-primary float-end new" data-type="disturbance"
+          onclick="handleUserQuotaCheck()">New +</button>
+      </div>
+    </div>
+
+    <br />
+
+    <div class="row full-width-list" id="disturbances-list"></div>
+
+    <div class="row">
+      <div id="no-disturbances-message" style="display: none;">You don't have any disturbances yet.</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="modal fade" id="new-disturbance-modal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">New disturbance</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="new-disturbance-form" class="form-control needs-validation" data-tabName="disturbance"
+          onsubmit="create(event)">
+          <div class="mb-3">
+            <label for="disturbance-name" class="form-label">Name</label>
+            <input class="form-control" data-name="name" id="disturbance-name" maxlength="32" required>
+          </div>
+          <div class="mb-3">
+            <label for="disturbance-description" class="form-label">Description</label>
+            <textarea id="disturbance-description" data-name="description" class="form-control"
+              maxlength="128"></textarea>
+          </div>
+          <div id="new-disturbance-component-types"></div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" data-tabname="disturbance">
+              Create
+            </button>
+            <button id="cancel-add-disturbance-btn" type="button" class="btn btn-secondary" data-tabname="disturbance"
+              onClick="closeCreateNewModal(event)">
+              Cancel
+            </button>
+          </div>
+          <div id="new-disturbance-error"></div>
+          <div id="disturbance-preview"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="confirm-delete-disturbance-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm Deletion</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete <b><span class="disturbance-name"></span></b>? This action cannot be undone.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button id="delete-disturbance-btn" type="button" class="btn btn-danger delete" data-tabname="disturbance"
+          onclick="deleteDisturbance(event)">Delete</button>
+        <button id="close-confirm-delete-disturbance-btn" type="button" class="btn btn-secondary"
+          data-tabname="disturbance" onClick="closeConfirmDeleteModal(event)">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/resilience/disturbances.js"></script>
+{% endblock %}

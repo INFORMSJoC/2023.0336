@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+<div class="login">
+	<div class="links">
+		<a href="{{ url_for('authentication.login') }}" class="active">Login</a>
+		<a href="{{ url_for('authentication.register') }}">Register</a>
+	</div>
+
+	{% if azure %}
+	<div class="sign-in-options">
+		<label>Sign in with</label>
+		<div>
+			<form method="post" action="{{ azure_url }}">
+				<button id="oauth-login-azure_activedirectory_v2" type="submit"><img alt="NPS account" title="Sign in with NPS account" src="{{ url_for('static', filename='authentication-codeshack/azure-logo.png') }}" loading="lazy" data-qa_selector="js_lazy_loaded_content">
+          <span>NPS account</span>
+				</button>
+				{% for key, value in azure_url_params.items() %}
+					<input type="hidden" name={{ key }} value={{ value }} />
+				{% endfor %}
+			</form>
+		</div>
+		<label>Or sign in with a registered account</label>
+	</div>
+	{% endif %}
+
+	<form class="ajax-form" action="" method="post">
+
+		<label for="username">
+			<i class="fas fa-user"></i>
+		</label>
+		<input type="text" name="username" placeholder="Username" id="username" required>
+
+		<label for="password">
+			<i class="fas fa-lock"></i>
+		</label>
+		<input type="password" name="password" placeholder="Password" id="password" required>
+
+		<!-- <label id="rememberme">
+			<input type="checkbox" name="rememberme">Remember me
+		</label> -->
+		<a href="{{ url_for('authentication.forgotpassword') }}">Forgot Password?</a>
+
+		<input type="hidden" name="token" value="{{ token }}">
+
+		<div class="msg">{{ msg }}</div>
+
+		<input type="submit" value="Login">
+
+	</form>
+
+	</div>
+</div>
+<script src="{{ url_for('static', filename='authentication-codeshack/script.js') }}"></script>
+{% endblock %}

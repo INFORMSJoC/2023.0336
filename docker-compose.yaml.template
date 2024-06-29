@@ -1,0 +1,41 @@
+version: '3'
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile-api
+    ports:
+      - "5000:5000"
+    depends_on:
+      database:
+        condition: service_healthy
+    volumes:
+      - "./config.env:/app/config.env:z"
+      - "./config.ini:/app/config.ini:z"
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile-frontend
+    ports:
+      - "8000:8000"
+    depends_on:
+      database:
+        condition: service_healthy
+      api:
+        condition: service_started
+    volumes:
+      - "./config.env:/app/config.env:z"
+      - "./config.ini:/app/config.ini:z"
+  database:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    env_file:
+      - config.env
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", '-u', 'root', '-p$$MYSQL_ROOT_PASSWORD']
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:       

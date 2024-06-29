@@ -1,0 +1,9 @@
+---
+# parameters specified by command-line take precendence
+no_mysql: False
+drop_create: True # must be set to False if you do not have root access
+no_db: False
+no_data: False
+no_data_guest: False
+data_paper: False
+secret_key: False

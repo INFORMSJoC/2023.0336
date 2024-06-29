@@ -1,0 +1,9 @@
+---
+# comment out unused parameters; parameters specified by command-line take precendence
+num_runs: 2 # number of simulation runs
+results_dir: "/Users/daniel.reich/Downloads/microgrid/reports/location_name_3_anonymized/rightsize/b100_dg100_pv100/210915_091644/dg0_b900_pv900"
+extend_timeframe: 0.00 # percentage of scenarios to duplicate to extend timeframe
+output_all: False # set to 'True' to write detailed output files
+rng_yaml: "run/design_of_experiments/sensitivity/rng_distribution_defaults.yml" # rng distribution parameters YAML
+rng_seed: 10 # seed for random number generation (use different seed than rightsize_grid.py)
+doe_file: "run/doe_teenytest.csv" # design of experiments CSV file (if not specified, run only with 'rng_yaml' params)

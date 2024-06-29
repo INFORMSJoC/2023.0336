@@ -1,0 +1,6 @@
+---
+cloud_lower: 0.0
+cloud_upper: 1.0
+sun_mean: 0.6
+sun_stdev: 0.15
+autoregressive_proportion: 0.584375

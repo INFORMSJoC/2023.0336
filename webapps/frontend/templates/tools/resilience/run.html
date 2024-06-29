@@ -1,0 +1,211 @@
+{% extends 'tools/resilience/layout.html' %}
+
+{% block head2 %}
+<link rel="stylesheet" type="text/css" href="/static/css/simulate.css" />
+{% endblock %}
+
+{% block content3 %}
+<div class="row">
+  <div class="col-12">
+    <div class="col">
+      <h3>Resilience</h3>
+      <br />
+      <p>Additional features coming soon. <i id="resilience-info-btn"
+          class="bi bi-info-circle info-btn"></i></p>
+    </div>
+    <div class="row">
+
+      <form id="resilience-form" class="run-form" onsubmit="runSimulation(event)">
+
+        <div class="row">
+          <div class="form-group col-md-3 align-self-end">
+            <label for="resiliencestartdatetime">Simulation Start Date and Time</label>
+            <input type="text" data-name="startdatetime" class="form-control" required id="resiliencestartdatetime"
+              aria-describedby="resiliencestartdatetime-help" autoComplete="off">
+          </div>
+
+          <div class="form-group col-md-3 align-self-end">
+            <label for="resilienceGridSelection">Microgrid</label>
+            <select id='resilienceGridSelection' data-name="grid_id" required class="form-select"
+              aria-label="Grid makeup select" aria-describedby="resilience-grid-makeup-help">
+              <option value="" selected disabled>Select a microgrid</option>
+            </select>
+          </div>
+
+          <div class="form-group col-md-3 align-self-end">
+            <label for="resilienceRepairSelection">Repair</label>
+            <select id='resilienceRepairSelection' data-name="repair_id" required class="form-select"
+              aria-label="Repair select" aria-describedby="resilience-grid-makeup-help">
+              <option value="" selected disabled>Select a repair</option>
+            </select>
+          </div>
+
+          <div class="form-group col-md-3 align-self-end">
+            <label for="resilienceDisturbanceSelection">Disturbance</label>
+            <select id='resilienceDisturbanceSelection' data-name="disturbance_id" required class="form-select"
+              aria-label="Disturbance select" aria-describedby="disturbance-help">
+              <option value="" selected disabled>Select a disturbance</option>
+            </select>
+          </div>
+        </div>
+
+        <br />
+        <div class="row">
+
+          <div class="form-group col-md-3 align-self-end">
+            <label for="resiliencedisturbance_datetime">Disturbance Start Date and Time</label>
+            <input type="text" class="form-control" data-name="disturbance_datetime" required
+              id="resiliencedisturbance_datetime" aria-describedby="resiliencedisturbance_datetime-help"
+              autoComplete="off">
+          </div>
+
+          <div class="form-group col-md-3 align-self-end">
+            <label for="resiliencePowerloadSelection">Powerload</label>
+            <select id='resiliencePowerloadSelection' class="form-select" data-name="load_id" required
+              aria-label="Resililence load selection">
+              <option value="" selected disabled hidden>Select powerload</option>
+            </select>
+          </div>
+          <div class="form-group col-md-3 align-self-end" style="display: none;">
+            <label for="resilienceStationSelection">
+              Station
+            </label>
+            <select id='resilienceStationSelection' class="form-control" data-name="location_id" required
+              aria-label="Location select" aria-describedby="resilienceStation-help">
+              <option value="1" selected disabled hidden>Select Station</option>
+            </select>
+          </div>
+
+          <div class="form-group col-md-2 align-self-end">
+            <label for="resilienceTimeframeSelection">Extend timeframe</label>
+            <select id='resilienceTimeframeSelection' data-name="extend_timeframe_proportion" required
+              class="form-select" aria-label="Timeframe select" aria-describedby="resilience-Timeframe-help">
+              <option value="0" selected>0%</option>
+              <option value="0.5">50%</option>
+              <option value="1.0">100%</option>
+            </select>
+          </div>
+
+          <div class="form-group col-md-2 align-self-end" style="display: none;">
+            <label for="resilience-num-runs">Num runs</label>
+            <input type="number" min="1" max="10" value="1" class="form-control" data-name="num_runs" required
+              id="resilience-num-runs" aria-describedby="resillience_num_runs-help" autoComplete="off"
+              onkeyup="validateMaxMinInputNoDecimal(this, event)"
+              onkeypress="validateMaxMinInputNoDecimal(this, event)">
+          </div>
+
+          <div class="form-group col-md-2 align-self-end">
+            <button id="resilience-run-btn" type="submit" class="btn btn-primary">Run Simulation</button>
+            <button class="btn btn-primary" type="button" disabled id="resilience-load-btn" style="display: none;">
+              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              Loading...
+            </button>
+          </div>
+
+
+        </div>
+
+
+        <!--<div class="form-group">
+                <label for="resilienceCountrySelection">Country</label>
+                <select id='resilienceCountrySelection' class="form-select" data-name="country" required aria-label="country select" aria-describedby="country-help">
+                  <option value="none" selected disabled hidden>Select country</option>
+                </select>
+              </div>
+  
+              <div class="form-group">
+                <label for="resilienceresilienceStateSelectionCountrySelection">State/Province</label>
+                <select id='resilienceStateSelection' class="form-select" data-name="state" reuired aria-label="state select" aria-describedby="state-help">
+                  <option value="none" selected disabled hidden>Select state</option>
+                </select>
+              </div>-->
+
+
+
+
+        <button type="button" id="resilience-load-btn" class="btn btn-primary" style="display:none;">
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          <span>Loading...</span>
+        </button>
+
+      </form>
+
+    </div>
+
+    <div class="row" id="resilienceD3Row" style="display:none;">
+      <div class="col large-graph-container">
+        <h4>Power vs. Time</h4>
+        <div id="powerVsTimeGraph"></div>
+      </div>
+      <div class="col mini-graph-container">
+        <div>
+          <h4 class="float-right">Unmet Power (negative) vs. Time<br/>Excess Power (positive) vs. Time</h4>
+          <div id="excessPowerGraph"></div>
+        </div>
+        <div>
+          <h4 class="float-right">State of Charge vs. Time</h4>
+          <div id="chargeStateGraph"></div>
+        </div>
+      </div>
+
+      <!-- <div class="row resilience-table-container">
+        <div id="resilienceParametersDiv" class="col-4"></div>
+        <div id="resilienceMetricsDiv" class="col-5"></div>
+      </div> -->
+
+    </div>
+
+    <div class="-modal modal fade" id="resilienceLoadModal1" tabindex="-1" role="dialog"
+      aria-labelledby="resilienceLoadModal1Label" aria-hidden="true">
+      <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+          <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">X</button>
+          <div class="modal-body text-center">
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-lg-20">
+                  <h2 class="modal-title text-secondary text-uppercase mb-0" id="resilienceModal1Label">
+                    Powerload
+                  </h2>
+                  <div class="row" id='resiliencePowerloadD3'>
+                    <div id="tab1-col1" class="col">
+                      <div class="row gx-0">
+                        <div id="resiliencePowerloadTable" class="table-fix-head table-responsive"></div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div id="resiliencePowerloadGraph"></div>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="resilience-info-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Resilience Demo Info</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>A student capstone group implemented a method that requires additional work prior to release: <a
+              href="https://hdl.handle.net/10945/71596" target="__blank">https://hdl.handle.net/10945/71596</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/helpers-graph.js"></script>
+<script src="/static/js/LineGraph.js"></script>
+<script src="/static/js/resilience/run.js"></script>
+{% endblock %}

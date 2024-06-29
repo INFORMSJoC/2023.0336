@@ -1,0 +1,15 @@
+{% extends 'tools/layout.html' %}
+
+{% block head2 %}
+<link rel="stylesheet" type="text/css" href="/static/css/grids.css" />
+<meta name="page-type" content="microgrids" />
+<meta name="id" content="{{ id }}" />
+{% endblock %}
+
+{% block content2 %}
+{% include 'tools/grid/layout-single.html' %}
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/grid/single.js"></script>
+{% endblock %}

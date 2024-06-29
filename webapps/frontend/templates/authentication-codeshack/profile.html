@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<div class="content profile">
+
+    <h2>Profile Page</h2>
+
+    <div class="block">
+
+        <p>Your account details are below.</p>
+
+        <div class="profile-detail">
+            <strong>Username</strong>
+            {{ account['username'] }}
+        </div>
+
+        <div class="profile-detail">
+            <strong>Email</strong>
+            {{ account['email'] }}
+        </div>
+
+        <div class="profile-detail">
+            <strong>Role</strong>
+            {{ account['role'] }}
+        </div>
+
+        <div class="profile-detail">
+            <strong>Registered</strong>
+            {{ account['registered'] }}
+        </div>
+
+        {% if editable %}
+            <a class="profile-btn" href="{{ url_for('authentication.edit_profile') }}">Edit Details</a>
+        {% endif %}
+
+    </div>
+
+</div>
+{% endblock %}
