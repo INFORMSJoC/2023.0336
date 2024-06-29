@@ -1,6 +1,0 @@
----
-# comment out unused parameters; parameters specified by command-line take precendence
-file: "/Users/daniel.reich/Downloads/microgrid/reports/location_name_3_anonymized/rightsize/b100_dg100_pv100/210920_083348/210920_084749sensitivity.csv"
-filter: "max" # metric of interest, by default set to "mean"
-filtermax: 0.50 # max value on slider for filter
-one_per_design: True # flag to return all design modification results or only one per design

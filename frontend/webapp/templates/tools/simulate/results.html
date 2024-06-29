@@ -1,0 +1,37 @@
+{% extends 'tools/simulate/layout.html' %}
+
+{% block content3 %}
+<div id="results"></div>
+
+<div id="full-screen-loader" style="margin-top: 100px;">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+<div class="modal fade" id="confirm-delete-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm Delete Result</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete <b><span class="record-name"></span></b>?</p>
+      </div>
+      <div class="modal-footer">
+        <button id="delete-btn" type="button" class="btn btn-danger">Delete</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+          onClick="closeConfirmDeleteModal(event)">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/table2csv@1.1.6/src/table2csv.min.js"></script>
+<script src="/static/js/helpers-table.js"></script>
+<script src="/static/js/simulate/results.js"></script>
+{% endblock %}

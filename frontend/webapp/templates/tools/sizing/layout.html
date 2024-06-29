@@ -1,0 +1,26 @@
+{% extends 'tools/layout.html' %}
+
+{% block head2 %}
+<link rel="stylesheet" type="text/css" href="/static/css/sizing.css" />
+<meta name="page-type" content="sizing" />
+{% block head3 %}{% endblock %}
+{% endblock %}
+
+{% block content2 %}
+<div class="submenu">
+  <a href="{{ url_for('sizing.grids') }}">
+    <div class="submenu-item {% if active_sub_page == 'grids' %}active{% endif %}">Microgrid Sizing Templates</div>
+  </a>
+  <a href="{{ url_for('sizing.compute') }}">
+    <div class="submenu-item {% if active_sub_page == 'compute' %}active{% endif %}">
+      Run Analysis
+    </div>
+  </a>
+  <a href="{{ url_for('sizing.results') }}">
+    <div class="submenu-item {% if active_sub_page == 'results' %}active{% endif %}" data-subpagename="results">
+      Results
+    </div>
+  </a>
+</div>
+<div id="sizing">{% block content3 %}{% endblock %}</div>
+{% endblock %}

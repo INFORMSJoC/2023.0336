@@ -1,0 +1,27 @@
+{% extends 'tools/simulate/layout.html' %}
+
+{% block head2 %}
+<link rel="stylesheet" type="text/css" href="/static/css/simulate.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/date-time-picker.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/widgets.css" />
+{% endblock %}
+
+{% block content3 %}
+<h3>Simulate</h3>
+<br />
+    
+{% include 'tools/simulate/compute-form.html' %}
+
+<div id="simulation-message-container"></div>
+
+{% include 'tools/simulate/summary-statistics.html' %}
+{% include 'tools/simulate/graphs.html' %}
+{% include 'tools/simulate/widgets.html' %}
+
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="/static/js/helpers-graph.js"></script>
+<script src="/static/js/simulate/compute.js"></script>
+{% endblock %}

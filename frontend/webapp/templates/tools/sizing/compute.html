@@ -1,0 +1,19 @@
+{% extends 'tools/sizing/layout.html' %}
+
+{% block head2 %}
+<link rel="stylesheet" type="text/css" href="/static/css/date-time-picker.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/widgets.css" />
+{% endblock %}
+
+{% block content3 %}
+
+{% include 'tools/simulate/compute-form.html' %}
+{% include 'tools/simulate/widgets.html' %}
+
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="/static/js/helpers-graph.js"></script>
+<script src="/static/js/sizing/compute.js"></script>
+{% endblock %}

@@ -1,0 +1,136 @@
+{% extends 'tools/layout.html' %}
+
+{% block head2 %}
+<link rel="stylesheet" type="text/css" href="/static/css/powerloads.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/widgets.css" />
+{% endblock %}
+
+{% block content2 %}
+
+<div class="row">
+  <div class="col">
+    <h3 id="title">Your Powerloads</h3>
+  </div>
+  <div class="col">
+    <button type="button" class="btn btn-primary float-end new" data-type="powerload"
+      onclick="handleUserQuotaCheck()">New +</button>
+  </div>
+</div>
+
+<br/>
+
+<div id="full-screen-loader">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+<div id="list" class="d-flex widget-container"></div>
+
+<div class="row">
+  <div id="no-powerloads-message" style="display: none;">You don't have any powerloads yet.</div>
+</div>
+
+<div class="modal fade" id="new-modal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">New Powerload</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="new-form" class="form-control needs-validation" onsubmit="onUploadClicked(event)">
+          <div class="mb-3">
+            <span>
+              Upload a new powerload <i id="info-btn" class="bi bi-info-circle info-btn"
+                onclick="openPowerloadInfoModal(event)"></i>
+            </span>
+            <input class="form-control" type="file" id="file" accept=".csv" required
+              onchange="handleUpload(event)">
+          </div>
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input class="form-control" name="name" id="name" maxlength="32" autocomplete="off" required>
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea id="description" name="description" class="form-control"
+              maxlength="128"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button id="upload-btn" type="submit" class="btn btn-primary align-self-end">
+              Upload
+            </button>
+            <button id="upload-load-btn" class="btn btn-primary align-self-end" type="button" style="display: none;"
+              disabled>
+              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              Loading...
+            </button>
+            <button id="cancel-add-btn" type="button" class="btn btn-secondary" onClick="closeCreateNewModal(event)">
+              Cancel
+            </button>
+          </div>
+          <div id="new-error"></div>
+          <div id="preview-container">
+            <div id="preview" class="powerload-table-container"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="confirm-delete-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm Deletion</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete <b><span class="name"></span></b>? This action cannot be undone.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button id="delete-btn" type="button" class="btn btn-danger delete">Delete</button>
+        <button 
+          id="close-confirm-delete-btn" 
+          type="button" 
+          class="btn btn-secondary"
+          onClick="closeConfirmDeleteModal(event)">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="file-info-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Powerload Files</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>The powerload file must be in CSV format with exactly two columns where the first column is time in hours and
+          the second column is power in kilowatts. The file may contain an optional header row.</p>
+        <p>Here are two example files both containing the powerload data in the application guest account: </p>
+        <a href="/static/data/powerload_example_no_header.csv">CSV example file without headers</a>
+        <br />
+        <a href="/static/data/powerload_example_with_header.csv">CSV example file with headers</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="powerload-temp-graph"></div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="/static/js/helpers-table.js"></script>
+<script src="/static/js/helpers-graph.js"></script>
+<script src="/static/js/powerload/all.js"></script>
+{% endblock %}

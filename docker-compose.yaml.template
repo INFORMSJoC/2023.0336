@@ -2,20 +2,24 @@ version: '3'
 services:
   api:
     build:
-      context: .
-      dockerfile: Dockerfile-api
+      context: ./backend
+      dockerfile: Dockerfile
     ports:
       - "5000:5000"
     depends_on:
       database:
         condition: service_healthy
     volumes:
-      - "./config.env:/app/config.env:z"
+      - "../ssh_creds:/ssh_creds:ro"
+      - "./database-authentication.env:/app/database-authentication.env:z"
+      - "./backend/database-microgrid.env:/app/backend/database-microgrid.env:z"
+      - "./backend/database-weather.env:/app/backend/database-weather.env:z"
+      - "./backend/config.ini:/app/backend/config.ini:z"
       - "./config.ini:/app/config.ini:z"
   frontend:
     build:
-      context: .
-      dockerfile: Dockerfile-frontend
+      context: ./frontend
+      dockerfile: Dockerfile
     ports:
       - "8000:8000"
     depends_on:
@@ -24,18 +28,18 @@ services:
       api:
         condition: service_started
     volumes:
-      - "./config.env:/app/config.env:z"
+      - "./database-authentication.env:/app/database-authentication.env:z"
+      - "./frontend/config.ini:/app/frontend/config.ini:z"
       - "./config.ini:/app/config.ini:z"
   database:
     image: mysql:8.0
     container_name: mysql
     restart: always
+    ports:
+      - "3306:3306"
     env_file:
-      - config.env
+      - database-authentication.env
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", '-u', 'root', '-p$$MYSQL_ROOT_PASSWORD']
     volumes:
-      - mysql_data:/var/lib/mysql
-
-volumes:
-  mysql_data:       
+      - ../mysql_data:/var/lib/mysql

@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="form-group col-md-4">
+    <label for="grid-selection">Microgrid</label>
+    <select 
+      name="grid_id" 
+      id='grid-selection' 
+      class="form-select" 
+      required
+      aria-label="Grid makeup select" 
+      aria-describedby="grid-makeup-help">
+      <option id="default-sizing-option" value="" selected disabled>Select a microgrid</option>
+    </select>
+  </div>
+  <div class="form-group col-md-4">
+    <label for="energy-management-system-selection">Energy Management System</label>
+    <select 
+      name="energy_management_system_id" 
+      id='energy-management-system-selection' 
+      class="form-select" 
+      required
+      aria-label="Energy Management System makeup select" 
+      aria-describedby="energy-management-system-makeup-help">
+      <option value="" selected disabled>Select an energy management system</option>
+    </select>
+  </div>
+  <div class="form-group col-md-4">
+    <label for="powerload-selection">
+      Powerload
+    </label>
+    <select 
+      name="load_id" 
+      id='powerload-selection' 
+      class="form-select" 
+      required
+      aria-label="powerload select">
+      <option value="" selected disabled>Select powerload</option>
+    </select>
+  </div>
+</div>

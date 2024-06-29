@@ -1,4 +1,0 @@
-cloud_lower,cloud_upper,sun_mean,sun_stdev,autoregressive_proportion
-0,0,0.3,0.05,0.7
-1,1,0.7,0.15,0.98
-6,6,6,6,6

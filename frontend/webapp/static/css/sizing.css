@@ -1,0 +1,127 @@
+#sizing #compute-id { display: inline; }
+#sizing td.sizing-grid-save a { float:left !important}
+#sizing #sizing-grids td { white-space: nowrap; }
+
+#rotated-table-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 235px;
+}
+
+h4 { 
+  flex-basis: 140px;
+}
+
+#location-name, #location-name b {
+  font-size: 17px;
+}
+
+#rotated-table-container table {
+  border-collapse: collapse;
+  --table-border-width: 1px;
+}
+
+#rotated-table-headers th img {
+  max-height: 17px;
+  background-color: white;
+  padding: 2px;
+  border-radius: 3px;
+  border: 1px solid #a0a0a0;
+}
+
+#rotated-table-headers thead tr, #rotated-table-container th {
+  border: 0px;
+}
+
+#rotated-table thead tr th {
+  padding: 0px;
+  font-size: 0px;
+}
+
+#rotated-table tr td:last-child {
+  padding-right: 10px;
+}
+
+#rotated-table tbody tr:first-child,
+#rotated-table tbody tr:first-child td {
+  border-top: 0px;
+}
+
+#rotated-table-container th > .rotate {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: left;
+  transform: 
+    translate(calc(100% - var(--table-border-width) / 2), var(--table-border-width))
+    rotate(315deg);
+  transform-origin: 0% calc(100% - var(--table-border-width));
+  width: 100%;
+}
+
+#rotated-table-container th:nth-child(odd) > .rotate .fill, 
+#rotated-table-container tr td:nth-child(odd) {
+  background-color: #b3bdcc;
+}
+
+#rotated-table-container th > .rotate .fill {
+  transform:skew(45deg);
+  position: absolute;
+  left: -11px;
+  bottom: 0px;
+  width: 320px;
+}
+
+#rotated-table-container th > .rotate .text {
+  transform: skew(-45deg);
+  margin-left: 10px;
+}
+
+
+#rotated-table-container th > .rotate > .text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+#rotated-table-container td {
+  text-align: right;
+  padding-top: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+  text-align: center;
+}
+
+#rotated-table-headers, #rotated-table {
+  display: block;
+}
+
+#rotated-table {
+  display: block;
+  overflow-y: auto;
+  max-height: 433px;
+  width: fit-content;
+}
+
+#rotated-table-headers thead tr th {
+  white-space: nowrap;
+  position: relative;
+  width: 56px !important;
+}
+
+#rotated-table-headers th,
+#rotated-table td {
+  width: 56px !important;
+}
+
+#rotated-table-headers {
+  margin-bottom: 0px;
+}
+
+.disabled {
+  pointer-events: none;
+  text-decoration: underline;
+  font-weight:600;
+  color: #3d3d3d !important;
+}
