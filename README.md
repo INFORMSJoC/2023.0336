@@ -5,12 +5,18 @@
 This archive is distributed in association with the [INFORMS Journal on
 Computing](https://pubsonline.informs.org/journal/ijoc) under the [MIT License](LICENSE).
 
-The software and data in this repository are a snapshot of the software and data
+The software and data in commit "version 2.1" of this repository are a snapshot of the software and data
 that were used in the research reported on in the paper 
 [Microgrid Planner: An Open-Source Software Platform](https://doi.org/10.1287/ijoc.2023.0336) by D. Reich and L. Frye. 
 The snapshot is based on 
 [this SHA](https://github.com/reichd/MicrogridPlanner/commit/e7e02cd217c91c6bdc6ee00170ce63e59920b315) 
 in the development repository.
+
+Also included in the repository is commit "version 1.1" that provides code and data corresponding to the computational experiments reported in the following three papers:
+
+1. Reich D, Oriti G (2021) Rightsizing the design of a hybrid microgrid. *Energies* 14(14):4273, URL [http://dx.doi.org/10.3390/en14144273](http://dx.doi.org/10.3390/en14144273).
+2. Reich D, Sanchez SM (2023) Sensitivity analysis of hybrid microgrids with application to deployed military units. *Naval Research Logistics (NRL)* 70(7):753–769, URL [http://dx.doi.org/10.1002/nav.22130](http://dx.doi.org/10.1002/nav.22130).
+3. Reich D (2024) Microgrid Planner: A distributed energy resource sizing method. URL [https://arxiv.org/abs/2406.19431](https://arxiv.org/abs/2406.19431).
 
 **Important: This code is being developed on an on-going basis at 
 https://github.com/reichd/MicrogridPlanner. Please go there if you would like to
