@@ -1,0 +1,45 @@
+version: '3'
+services:
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    depends_on:
+      database:
+        condition: service_healthy
+    volumes:
+      - "../ssh_creds:/ssh_creds:ro"
+      - "./database-authentication.env:/app/database-authentication.env:z"
+      - "./backend/database-microgrid.env:/app/backend/database-microgrid.env:z"
+      - "./backend/database-weather.env:/app/backend/database-weather.env:z"
+      - "./backend/config.ini:/app/backend/config.ini:z"
+      - "./config.ini:/app/config.ini:z"
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      database:
+        condition: service_healthy
+      api:
+        condition: service_started
+    volumes:
+      - "./database-authentication.env:/app/database-authentication.env:z"
+      - "./frontend/config.ini:/app/frontend/config.ini:z"
+      - "./config.ini:/app/config.ini:z"
+  database:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    ports:
+      - "3306:3306"
+    env_file:
+      - database-authentication.env
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", '-u', 'root', '-p$$MYSQL_ROOT_PASSWORD']
+    volumes:
+      - ../mysql_data:/var/lib/mysql

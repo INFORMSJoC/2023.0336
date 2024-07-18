@@ -1,0 +1,109 @@
+.datetime-container {
+  max-width: 350px;
+}
+
+.ui-datepicker {
+  z-index: 12 !important;
+}
+
+.ui-datepicker-header.ui-widget-header {
+  background: white;
+  border: 0px;
+}
+
+.ui-datepicker-title * {
+  font-size: 18px;
+}
+
+.ui-icon, .ui-widget-content .ui-icon.ui-icon-circle-triangle-w,
+.ui-icon, .ui-widget-content .ui-icon.ui-icon-circle-triangle-e {
+  background-size: 14px;
+  background-position: left;
+}
+
+.ui-icon, .ui-widget-content .ui-icon.ui-icon-circle-triangle-w {
+  background-image: url("/static/images/angle-left-solid.svg");
+}
+
+.ui-icon, .ui-widget-content .ui-icon.ui-icon-circle-triangle-e {
+  background-image: url("/static/images/angle-right-solid.svg");
+}
+
+.ui-datepicker-calendar .ui-state-default {
+  background: white;
+  border: 0px;
+}
+
+.ui-datepicker-calendar .ui-state-active,
+.ui-timepicker-wrapper .ui-timepicker-list .ui-timepicker-selected {
+  background-color: #3D6CB9;
+  color: white !important;
+
+}
+
+.ui-datepicker-calendar .ui-state-hover:not(.ui-state-active),
+.ui-timepicker-wrapper .ui-timepicker-list li:hover:not(.ui-timepicker-selected) {
+  background-color: #ededed;
+  color: #333333;
+}
+
+.ui-widget-content, a.ui-state-default, .ui-datepicker-header.ui-widget-header {
+  color: #333333 !important;
+}
+
+.ui-datepicker-calendar .ui-state-default {
+  text-align: center !important;
+  padding: 5px !important;
+}
+
+.ui-datepicker,
+.ui-datepicker-calendar .ui-state-active,
+.ui-datepicker-calendar .ui-state-hover {
+  border-radius: 3px;
+}
+
+.ui-datepicker-prev, .ui-datepicker-next {
+  color: #333333 !important;
+}
+
+.ui-datepicker-prev.ui-state-hover, .ui-datepicker-next.ui-state-hover {
+  border: 0px solid;
+  background: #ededed !important;
+  border-radius: 3px !important;
+  padding-bottom: 2px;
+  margin-top: 1px;
+} 
+
+.ui-datepicker-next.ui-state-hover {
+  margin-right: 1px;
+}
+
+.ui-datepicker-prev.ui-state-hover {
+  margin-left: 1px;
+}
+
+.date-container {
+  padding-right: 10px;
+  max-width: 200px;
+}
+
+.date-container input:not([disabled]) {
+  background-color: #fff !important; 
+  cursor: text !important;
+}
+
+.time-container {
+  max-width: 130px;
+}
+
+.ui-timepicker-wrapper {
+  text-align: center;
+}
+
+.example::-webkit-scrollbar {
+  display: none;
+}
+
+.ui-timepicker-wrapper .ui-timepicker-list li {
+  padding-right: 0px;
+}

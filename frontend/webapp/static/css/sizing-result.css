@@ -1,0 +1,12 @@
+.widget-container {
+  width: 100%;
+  max-width: 600px;
+}
+
+.widget {
+  width: 50%;
+}
+
+.widget.powerload {
+  margin-right: 30px;
+}

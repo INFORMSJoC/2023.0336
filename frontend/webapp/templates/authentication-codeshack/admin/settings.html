@@ -1,0 +1,33 @@
+{% extends 'authentication-codeshack/admin/layout.html' %}
+
+{% block title %}Settings{% endblock %}
+
+{% block content %}
+<h2>Settings</h2>
+
+{% if msg %}
+<div class="msg success">
+    <i class="fas fa-check-circle"></i>
+    <p>{{ msg }}</p>
+    <i class="fas fa-times"></i>
+</div>
+{% endif %}
+
+{{ settings_format_tabs(['Add-ons', 'Registration', 'reCAPTCHA'])|safe }}
+<div class="content-block">
+    <form action="" method="post" class="form responsive-width-100">
+        {{ settings_format_form(settings)|safe }}
+        <div class="submit-btns">
+            <input type="submit" value="Save">
+        </div>
+    </form>
+</div>
+
+<script>
+document.querySelectorAll("input[type='checkbox']").forEach(checkbox => {
+    checkbox.onclick = () => {
+        checkbox.value = checkbox.checked ? 'true' : 'false';
+    };
+});
+</script>
+{% endblock %}

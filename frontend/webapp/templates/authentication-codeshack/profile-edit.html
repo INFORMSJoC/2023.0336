@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block title %}Edit Profile{% endblock %}
+
+{% block content %}
+<div class="content profile">
+
+    <h2>Edit Profile Page</h2>
+
+    <div class="block">
+
+        <form action="" method="post">
+
+            <label for="username">Username</label>
+            <input type="text" value="{{ account['username'] }}" name="username" id="username" placeholder="Username" autocomplete="username">
+
+            <label for="password">New Password</label>
+            <input type="password" name="password" id="password" placeholder="New Password">
+
+            <label for="cpassword">Confirm Password</label>
+            <input type="password" name="cpassword" id="cpassword" placeholder="Confirm Password">
+
+            <label for="email">Email</label>
+            <input type="email" value="{{ account['email'] }}" name="email" id="email" placeholder="Email" autocomplete="email">
+
+            <br>
+
+            <input class="profile-btn" type="submit" value="Save" name="save">
+
+            {% for line in msg %}
+                <p>{{line}}</p>
+            {% endfor %}
+
+        </form>
+
+    </div>
+
+</div>
+{% endblock %}

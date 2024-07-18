@@ -1,0 +1,13 @@
+[SECURITY]
+SECRET_KEY=
+[MAIL]
+MAIL_SERVER=required_for_web_app_user_accounts
+MAIL_PORT=required_for_web_app_user_accounts
+MAIL_USERNAME=required_for_web_app_user_accounts
+MAIL_PASSWORD=required_for_web_app_user_accounts
+MAIL_USE_TLS=False
+MAIL_USE_SSL=False
+MAIL_REPLY_TO=required_for_web_app_user_accounts
+MAIL_DISABLE_FOR_RUN_LOCAL=True
+[FRONTEND]
+URL=http://0.0.0.0:8000

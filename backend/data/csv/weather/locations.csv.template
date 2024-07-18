@@ -1,0 +1,3 @@
+Location,State / Region / Province,Country,"Lat, Long from Google Maps",Lat,Long,Long+Lat,API Endpoint,NSRDB Closest Location ID
+Monterey,California,United States of America,"36.600982, -121.877535",36.600982,-121.877535,-121.877535+36.600982,US,145612
+Dublin,Leinster,Republic of Ireland,"53.343750, -6.266043",53.34375,-6.266043,-6.266043+53.343750,"Europe, Africa, & South Asia",165309

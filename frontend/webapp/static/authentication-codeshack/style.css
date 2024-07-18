@@ -1,0 +1,272 @@
+* {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
+  font-size: 16px;
+}
+
+body {
+  background-color: #435165;
+  margin: 0;
+}
+
+.login, .register {
+  width: 400px;
+  background-color: #ffffff;
+  box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+  margin: 100px auto;
+}
+
+.login h1, .register h1 {
+  text-align: center;
+  color: #5b6574;
+  font-size: 24px;
+  padding: 20px 0 20px 0;
+  border-bottom: 1px solid #dee0e4;
+}
+
+.login .links, .register .links {
+  display: flex;
+  padding: 0 15px;
+}
+
+.login .links a, .register .links a {
+  color: #adb2ba;
+  text-decoration: none;
+  display: inline-flex;
+  padding: 0 10px 10px 10px;
+  font-weight: bold;
+}
+
+.login .links a:hover, .register .links a:hover {
+  color: #9da3ac;
+}
+
+.login .links a.active, .register .links a.active {
+  border-bottom: 3px solid #3274d6;
+  color: #3274d6;
+}
+
+.login form, .register form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.login form label, .register form label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 12%;
+  height: 50px;
+  background-color: #3274d6;
+  color: #ffffff;
+}
+
+.login form input[type="password"], .login form input[type="text"], .login form input[type="email"], .register form input[type="password"], .register form input[type="text"], .register form input[type="email"] {
+  width: 80%;
+  height: 50px;
+  border: 1px solid #dee0e4;
+  margin-bottom: 20px;
+  padding: 0 15px;
+}
+
+.login form input[type="submit"], .register form input[type="submit"] {
+  width: 100%;
+  padding: 15px;
+  margin-top: 20px;
+  background-color: #3274d6;
+  border: 0;
+  cursor: pointer;
+  font-weight: bold;
+  color: #ffffff;
+  transition: background-color 0.2s;
+  border-radius: 0;
+  appearance: none;
+}
+
+.login form input[type="submit"]:hover, .register form input[type="submit"]:hover {
+  background-color: #2868c7;
+  transition: background-color 0.2s;
+}
+
+.login form #rememberme, .register form #rememberme {
+  width: 100%;
+  height: auto;
+  padding: 5px 20px;
+  background-color: transparent;
+  color: #000;
+  justify-content: flex-start;
+}
+
+.login form #rememberme input, .register form #rememberme input {
+  transform: scale(1.3);
+  margin-right: 7px;
+}
+
+.login form .msg, .register form .msg {
+  padding: 0 20px;
+  width: 100%;
+}
+
+.login form .captcha, .register form .captcha {
+  display: flex;
+}
+
+.login form > a, .register form > a {
+  text-decoration: none;
+  color: #5b6574;
+  width: 100%;
+  padding: 5px 20px;
+}
+
+.login form > a:hover, .register form > a:hover {
+  color: #394049;
+}
+
+.navtop {
+  background-color: #2f3947;
+  width: 100%;
+  border: 0;
+}
+
+.navtop .container {
+  display: flex;
+  margin: 0 auto;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navtop .container h1, .navtop div a {
+  display: inline-flex;
+  align-items: center;
+}
+
+.navtop .container h1 {
+  flex: 1;
+  font-size: 22px;
+  padding: 0;
+  margin: 0;
+  color: #eaebed;
+  font-weight: normal;
+}
+
+.navtop .container a {
+  padding: 0 15px;
+  text-decoration: none;
+  color: #c1c4c8 !important;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.navtop .container a i {
+  font-size: 14px;
+  padding: 2px 8px 0 0;
+}
+
+.navtop .container a:hover {
+  color: #eaebed !important;
+}
+
+body.loggedin {
+  background-color: #f3f4f7;
+}
+
+
+.content .block {
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+  margin: 25px 0;
+  padding: 25px;
+  background-color: #fff;
+}
+
+.content .block p {
+  padding: 5px;
+  margin: 0 0 10px 0;
+}
+
+.content.profile form label {
+  display: block;
+  padding: 15px 0 10px 0;
+  font-weight: 500;
+  font-size: 14px;
+  color: #4d4d4d;
+}
+
+.content.profile form input[type="text"], .content.profile form input[type="password"], .content.profile form input[type="email"] {
+  padding: 10px;
+  width: 250px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.content.profile .profile-detail {
+  padding: 5px;
+}
+
+.content.profile .profile-detail strong {
+  display: inline-block;
+  color: #777;
+  min-width: 120px;
+  font-size: 16px;
+}
+
+.content.profile .profile-detail i {
+  width: 28px;
+  color: #aaabad;
+}
+
+.content.profile .profile-btn {
+  display: inline-block;
+  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+  color: #fff;
+  background-color: #3274d6;
+  margin: 20px 5px 0 0;
+  padding: 10px 15px;
+  border-radius: 4px;
+  appearance: none;
+  font-size: 14px;
+}
+
+.content.profile .profile-btn:hover {
+  background-color: #2868c7;
+}
+
+@media screen and (max-width: 400px) {
+  .login, .register {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .navtop {
+    padding: 10px;
+  }
+  .navtop .container {
+    flex-flow: wrap;
+    width: 100%;
+    height: auto;
+  }
+  .navtop .container h1 {
+    display: block;
+    flex-basis: 100%;
+  }
+  .navtop .container a {
+    padding: 10px 0;
+    flex-basis: 50%;
+  }
+  .content {
+    padding: 10px;
+    width: 100%;
+  }
+  .content form input[type="text"], .content form input[type="password"], .content form input[type="email"] {
+    width: 100%;
+    max-width: 100%;
+  }
+  .profile-detail strong {
+    width: 100%;
+  }
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1">
+		<title>Two-factor Authentication</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='authentication-codeshack/style.css') }}">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+	</head>
+	<body>
+		<div class="login">
+			<h1>Two-factor Authentication</h1>
+            <p style="padding:15px;margin:0;">Please enter the code that was sent to your email address below.</p>
+			<form action="" method="post">
+                <label for="code">
+					<i class="fas fa-lock"></i>
+				</label>
+				<input type="text" name="code" placeholder="Your Code" id="code" required>
+				<div class="msg">{{ msg }}</div>
+				<input type="submit" value="Submit">
+			</form>
+		</div>
+	</body>
+</html>
